@@ -1,1 +1,1 @@
-#Learning Ruby
+# Learning Ruby with Git
