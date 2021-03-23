@@ -1,12 +1,15 @@
 arr = []
 loop do
-    print 'Enter something: '
-    string = gets.strip
-    break if string.empty?
-    arr << string
+    print 'Enter name to add: '
+    name = gets.strip
+    break if name.empty?
+    print 'Enter age to add: '
+    age = gets.to_i
+    break if age == 0
+    arr << [name, age]
 end
 x = 0
-arr.each do |string|
+arr.each do |name, age|
     x += 1
-    puts "#{x}. #{string}"
+    puts "#{x}. #{name} - #{age}"
 end
