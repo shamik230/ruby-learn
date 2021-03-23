@@ -1,3 +1,4 @@
+# Камень, ножницы, бумага
 arr = [:rock, :scissors, :paper]
 
 puts '(R)ock, (S)cissors, (P)aper? '

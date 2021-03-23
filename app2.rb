@@ -1,3 +1,4 @@
+# Анимированная палка :)
 str = '/-\|'
 loop do
     str.length.times do |i|
