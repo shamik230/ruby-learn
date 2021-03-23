@@ -1,2 +1,2 @@
-# Learning Ruby with Git
-Hello There
+# Изучаю Ruby и Git
+Hello there. o/
