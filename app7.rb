@@ -1,4 +1,4 @@
-# Tic-tac-toe
+# Tic-tac-toe (Крестики-Нолики)
 table = [
     ['*', '*', '*'],
     ['*', '*', '*'],
@@ -62,8 +62,44 @@ def computer_turn(table)
     end
 end
 
+def win_check(table)
+    0.upto(2) do |y|
+        if [ table[y][0], table[y][1], table[y][2] ].difference(['X']) == []
+            puts "Игрок победил!"
+            exit
+        elsif [ table[y][0], table[y][1], table[y][2] ].difference(['O']) == []
+            puts "Компьютер победил!"
+            exit
+        end
+    end
+    0.upto(2) do |x|
+        if [ table[0][x], table[1][x], table[2][x] ].difference(['X']) == []
+            puts "Игрок победил!"
+            exit
+        elsif [ table[0][x], table[1][x], table[2][x] ].difference(['O']) == []
+            puts "Компьютер победил!"
+            exit
+        end
+    end
+    if [ table[0][0], table[1][1], table[2][2] ].difference(['X']) == []
+        puts "Игрок победил!"
+        exit
+    elsif [ table[0][0], table[1][1], table[2][2] ].difference(['O']) == []
+        puts "Компьютер победил!"
+        exit
+    end
+    if [ table[0][2], table[1][1], table[2][0] ].difference(['X']) == []
+        puts "Игрок победил!"
+        exit
+    elsif [ table[0][2], table[1][1], table[2][0] ].difference(['O']) == []
+        puts "Компьютер победил!"
+        exit
+    end
+end
+
 loop do
     show_table(table)
+    win_check(table)
     player_turn(table)
     computer_turn(table)
 end
