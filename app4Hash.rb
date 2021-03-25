@@ -2,7 +2,11 @@
 hh = {}
 
 def add_to_hash(name, age, hh)
-hh[name] = age
+    if hh[name]
+        puts "Такое имя уже есть!" 
+    else
+        hh[name] = age
+    end
 end
 
 def show_hash(hh)
