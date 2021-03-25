@@ -1,0 +1,27 @@
+# Ввод/вывод хэша, который хранит данные в формате (имя, возраст)
+hh = {}
+
+def add_to_hash(name, age, hh)
+hh[name] = age
+end
+
+def show_hash(hh)
+    hh.each {|k, v| puts "#{k} - #{v}"}
+end
+
+def input(hh)
+    puts 'Введите имя: '
+    name = gets.strip.capitalize
+    if name.empty?
+        show_hash(hh)
+        exit
+    end
+    puts 'Введите возраст: '
+    age = gets.to_i
+    add_to_hash(name, age, hh)
+end
+
+loop do
+    input(hh)
+    show_hash(hh)
+end
