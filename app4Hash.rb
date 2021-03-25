@@ -1,7 +1,9 @@
 # Ввод/вывод хэша, который хранит данные в формате (имя, возраст)
 hh = {}
 
-def add_to_hash(name, age, hh)
+def add_to_hash(options, hh)
+    name = options[:name]
+    age = options[:age]
     if hh[name]
         puts "Такое имя уже есть!" 
     else
@@ -22,7 +24,7 @@ def input(hh)
     end
     puts 'Введите возраст: '
     age = gets.to_i
-    add_to_hash(name, age, hh)
+    add_to_hash({name: name, age: age}, hh)
 end
 
 loop do
