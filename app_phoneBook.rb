@@ -1,4 +1,4 @@
-# Реализация app4 с классом
+# Phonebook with class
 class Book
     def initialize
         @hash = {}
