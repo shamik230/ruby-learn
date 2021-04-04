@@ -1,5 +1,11 @@
 require 'sinatra'
 
 get '/' do
-    'Hi'
+    erb :index
+end
+
+post '/' do
+    @login = params[:login]
+    @password = params[:password]
+    erb :index
 end
