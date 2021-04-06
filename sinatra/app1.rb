@@ -1,33 +1,39 @@
 require 'sinatra'
 
+$hash = {}
+
 get '/' do
     erb :index
 end
 
-get '/contacts' do
-    @title = 'Contacts'
-    @message = 'Phone 123'
-    erb :message
+get '/admin' do
+    erb :admin
 end
 
-get '/faq' do
-    @title = 'FAQ' 
-    @message = 'Phone 123'
-    erb :message
+get '/welcome' do
+    erb :welcome
 end
 
-get '/something' do
-    @title = 'Something'
-    @message = 'bla'
-    erb :message
-end
 post '/' do
-    @login = params[:login]
-    @password = params[:password]
+    @username = params[:username]
+    @tel = params[:tel]
+    @time = params[:time]
+    file = File.open("./users.txt", "a")
+    if @username.length > 3
+        $hash[@username] = [@tel, @time]
+        file.write("Name: #{@username} Tel: #{@tel} Time: #{@time}\n")
+        @index_message = "Ваши данные сохранены"
+    end
+    erb :index
+end
+
+post '/admin' do
+    @login = params[:admin_login]
+    @password = params[:admin_password]
     if @login == "admin" && @password == "secret"
         erb :welcome
     else
-        @message = "Access denied"
-        erb :index
+        @admin_message = "Access denied"
+        erb :admin
     end
 end

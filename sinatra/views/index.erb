@@ -1,7 +1,12 @@
-<h1>Hi</h1>
-<p> <%=@message%> </p>
+<h1>Добро пожаловать</h1>
+<h2>Запишитесь на приём</h2>
 <form action="/" method="POST">
-    <input type="text" name = "login"/>
-    <input type="password" name = "password"/>
+    Введите своё имя </br>
+    <input type="text" name ="username"/> </br>
+    Введите свой номер телефона </br>
+    <input type="text" name ="tel"/> </br>
+    Введите время встречи </br>
+    <input type="text" name ="time"/> </br>
     <input type="submit"/>
 </form>
+<p> <%=@index_message%> </p>
