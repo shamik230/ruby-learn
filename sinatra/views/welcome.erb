@@ -1,2 +1,4 @@
 <h1>Stored data</h1>
-<p> <%=$hash%> </p>
+<% @data.each_line do |line| %>
+    <%= line %> </br>
+<% end %>
