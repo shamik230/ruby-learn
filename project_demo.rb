@@ -23,13 +23,13 @@ def user_create
     print "Password: "
     password1 = gets.strip
     if password1.size < 4
-      puts "Password should have 4 or more symbols"
+      puts "Password must have 4 or more symbols"
       next
     end
     print "Enter again: "
     password2 = gets.strip
     if password1 != password2
-      puts "Passwords does not match"
+      puts "Passwords do not match"
       next
     else
       pas = password1
@@ -84,7 +84,7 @@ def post_add
     puts "Enter a message"
     mes = gets.strip
     if mes.size < 4
-      puts "Message should have at least 4 symbols"
+      puts "Message must have at least 4 symbols"
       next
     else
       message = mes
@@ -108,7 +108,7 @@ def post_delete
   end
   puts "_" * 20
   loop do
-    print "Which one you want to delete? (1-#{size}) "
+    print "Which one do you want to delete? (1-#{size}) "
     input = gets.to_i - 1
     if (0..size-1).include?(input)
       @post_db[@logged].delete_at(input)
@@ -137,26 +137,20 @@ def logged?
     !@logged.nil?
 end
 
-def menu
+def menu_logged
   puts "=" * 40
-  puts "Welcome (#{@logged})" if logged?
-  puts "(L)ogin"              unless logged?
-  puts "(O)ff"                if logged?
-  puts "(R)egister"           unless logged?
+  puts "Welcome (#{@logged})"
+  puts "(O)ff"
   puts "(S)how users"
   puts "(V)iew posts"
-  puts "(A)dd post"           if logged?
-  puts "(D)elete post"        if logged?
+  puts "(A)dd post"
+  puts "(D)elete post"
   puts "(E)xit"
   puts "=" * 40
   input = gets.strip.downcase
   case input
-    when 'l'
-      user_login
     when 'o'
       user_logout
-    when 'r'
-      user_create
     when 'v'
       post_view
     when 'a'
@@ -175,6 +169,35 @@ def menu
   end
 end
 
+def menu_off
+  puts "=" * 40
+  puts "(L)ogin"
+  puts "(R)egister"
+  puts "(S)how users"
+  puts "(V)iew posts"
+  puts "(E)xit"
+  puts "=" * 40
+  input = gets.strip.downcase
+  case input
+    when 'l'
+      user_login
+    when 'r'
+      user_create
+    when 'v'
+      post_view
+    when 's'
+      user_show
+    when 'e'
+      exit
+    when 'admin'
+      p @user_db
+      p @post_db
+    else
+      puts "(Incorrect input)"
+  end
+end
+
 loop do
-  menu
+  menu_logged if logged?
+  menu_off    unless logged?
 end
